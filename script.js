@@ -15,8 +15,9 @@ document.getElementById("submitOrder").addEventListener("click", function () {
     const street = document.getElementById("street").value;
     const zip = document.getElementById("zip").value;
     const city = document.getElementById("city").value;
+    const email = document.getElementById("email").value;
 
-    if (!street || !zip || !city) {
+    if (!street || !zip || !city || !email) {
         alert("Inserisci tutti i dati di spedizione.");
         return;
     }
@@ -28,6 +29,7 @@ document.getElementById("submitOrder").addEventListener("click", function () {
         street: street,
         zip: zip,
         city: city,
+        email: email, // Aggiunta dell'email
         confirmed: false,
         uniqueCode: uniqueCode
     };
@@ -78,9 +80,10 @@ function displayOrder(order, index) {
     newRow.insertCell(2).innerText = order.street;
     newRow.insertCell(3).innerText = order.zip;
     newRow.insertCell(4).innerText = order.city;
-    
+    newRow.insertCell(5).innerText = order.email; // Mostra l'email
+
     // Colonna "Verificato" con una checkbox
-    const verifyCell = newRow.insertCell(5);
+    const verifyCell = newRow.insertCell(6);
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.checked = order.confirmed;
@@ -91,17 +94,12 @@ function displayOrder(order, index) {
     verifyCell.appendChild(checkbox);
 
     // Colonna azioni con il pulsante di cancellazione
-    const actionCell = newRow.insertCell(6);
+    const actionCell = newRow.insertCell(7);
     const deleteButton = document.createElement("button");
     deleteButton.innerText = "Cancella";
-    deleteButton.classList.add("delete-btn");
     deleteButton.addEventListener("click", function () {
-        // Animazione di rimozione della riga
-        newRow.classList.add("fade-out");
-        setTimeout(function() {
-            deleteOrder(index); // Elimina l'ordine da localStorage
-            table.deleteRow(newRow.rowIndex); // Rimuove la riga dalla tabella
-        }, 300); // Ritardo per l'animazione
+        deleteOrder(index);
+        table.deleteRow(newRow.rowIndex);
     });
     actionCell.appendChild(deleteButton);
 }
@@ -116,7 +114,8 @@ function saveOrdersToStorage() {
             street: row.cells[2].innerText,
             zip: row.cells[3].innerText,
             city: row.cells[4].innerText,
-            confirmed: row.cells[5].firstChild.checked
+            email: row.cells[5].innerText, // Includi l'email
+            confirmed: row.cells[6].firstChild.checked
         };
     });
     localStorage.setItem('orders', JSON.stringify(updatedOrders));
