@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-ordine Felpe</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Schermata Iniziale -->
+    <div id="introScreen" class="intro-screen">
+        <img src="IMG_2930.PNG" alt="Immagine" class="intro-image">
+        <button id="enterSite" class="enter-btn">Entra</button>
+    </div>
+
+    <!-- Schermata Secondaria (selezione taglie/colori) -->
+    <div id="mainContent" class="main-screen hidden">
+        <h1>Pre-order felpe No issue</h1>
+
+        <!-- Seleziona la colorway -->
+        <div class="color-selection">
+            <h2>Seleziona la colorway della grafica:</h2>
+            <select id="color">
+                <option value="rosso">Rosso</option>
+                <option value="verde">Verde</option>
+                <option value="bianco">Bianco</option>
+                <option value="viola">Viola</option>
+            </select>
+        </div>
+
+        <!-- Seleziona la taglia -->
+        <div class="size-selection">
+            <h2>Seleziona la taglia:</h2>
+            <select id="size">
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+            </select>
+        </div>
+
+        <!-- Dati di spedizione -->
+        <div class="shipping-details">
+            <h2>Inserisci i dettagli di spedizione:</h2>
+            <label for="street">Via:</label>
+            <input type="text" id="street" placeholder="Inserisci la via">
+            <label for="zip">CAP:</label>
+            <input type="text" id="zip" placeholder="Inserisci CAP">
+            <label for="city">Città:</label>
+            <input type="text" id="city" placeholder="Inserisci città">
+        </div>
+
+        <!-- Conferma Pre-ordine -->
+        <button type="button" id="submitOrder" class="confirm-btn">Conferma Pre-ordine</button>
+        <!-- Pulsante per accedere all'area privata -->
+        <button type="button" id="accessPrivate" class="private-btn">Area Privata</button>
+    </div>
+
+    <!-- Schermata conferma ordine con codice univoco -->
+    <div id="confirmationScreen" class="confirmation-screen hidden">
+        <h2>Il tuo pre-ordine è stato confermato!</h2>
+        <p>Il tuo codice di conferma unico è: <span id="confirmationCode"></span></p>
+        <p id="confirmationMessage">ATTENZIONE: invia questo codice alla pagina Instagram @no.issue_official per la conferma e il pagamento dell'ordine.</p>
+        <button type="button" id="backToMain" class="back-btn">Torna alla home</button>
+    </div>
+
+    <!-- Area Privata (inizialmente nascosta) -->
+    <div id="privateSection" class="private-area hidden">
+        <h2>Accesso all'Area Privata</h2>
+        <form id="adminLoginForm">
+            <label for="password">Inserisci il codice di accesso:</label>
+            <input type="password" id="password" placeholder="Codice">
+            <button type="button" id="loginButton">Accedi</button>
+        </form>
+
+        <div id="orderSummary" class="hidden">
+            <h2>Riepilogo Ordini</h2>
+            <table id="orderTable">
+                <thead>
+                    <tr>
+                        <th>Colore</th>
+                        <th>Taglia</th>
+                        <th>Via</th>
+                        <th>CAP</th>
+                        <th>Città</th>
+                        <th>Verificato</th>
+                        <th>Azioni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Ordini pre-ordinati saranno visualizzati qui -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
