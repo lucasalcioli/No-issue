@@ -56,9 +56,20 @@ h1, h2 {
 
 label {
     color: #ffffff;
+    display: block; /* Mostra l'etichetta su una nuova riga */
+    margin: 10px 0 5px; /* Margine per l'etichetta */
 }
 
-.confirm-btn {
+input, select {
+    width: 100%; /* Occupa tutta la larghezza disponibile */
+    padding: 10px; /* Padding per il campo */
+    margin-bottom: 15px; /* Margine sotto il campo */
+    border: 1px solid #ffffff; /* Bordo per il campo */
+    border-radius: 5px; /* Bordo arrotondato */
+}
+
+/* Pulsanti */
+.confirm-btn, .private-btn {
     background-color: #6a006a;
     color: white;
     padding: 15px 30px;
@@ -66,9 +77,11 @@ label {
     font-size: 1.2em;
     margin-top: 30px;
     cursor: pointer;
+    display: block; /* Pulsanti su una nuova riga */
+    width: 100%; /* Occupa tutta la larghezza disponibile */
 }
 
-.confirm-btn:hover {
+.confirm-btn:hover, .private-btn:hover {
     background-color: #8a008a;
 }
 
@@ -78,17 +91,6 @@ label {
     color: #ffffff;
     padding: 20px;
     display: none;
-}
-
-.private-btn {
-    background-color: #6a006a;
-    color: white;
-    padding: 10px 20px;
-    margin-top: 30px;
-    cursor: pointer;
-    position: absolute; /* Spostato sulla destra */
-    right: 20px; /* Distanza dal margine destro */
-    top: 50px; /* Distanza dall'alto */
 }
 
 #orderTable {
@@ -101,4 +103,19 @@ label {
     border: 1px solid #ffffff;
     padding: 10px;
     text-align: center;
+}
+
+/* Stili responsive */
+@media (max-width: 600px) {
+    .intro-image {
+        width: 80%; /* Immagine più piccola sui dispositivi mobili */
+    }
+
+    h1 {
+        font-size: 1.5em; /* Ridurre la dimensione del titolo sui dispositivi mobili */
+    }
+
+    .enter-btn, .confirm-btn, .private-btn {
+        font-size: 1em; /* Dimensione del testo del pulsante */
+    }
 }
